@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Template driven form</h2>
+    <form action="" #contactForm="ngForm" (submit)="onSubmit(contactForm)" ngNativeValidate>
+        <p>
+            <label for="firstname">First Name</label>
+            <input class="form-control w-25" type="text" id="firstname" name="firstname" ngModel required>
+        </p>
+        <p>
+            <label for="lastname">Last Name</label>
+            <input class="form-control w-25" type="text" id="lastname" name="lastname" ngModel required>
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input class="form-control w-25" type="email" id="email" name="email" ngModel required>
+        </p>
+        <p>
+            <label for="gender">Gender</label>
+            <input type="radio" value="male" class="form-check-input" id="gender" name="gender" ngModel required> Male
+            <input type="radio" value="female" class="form-check-input" id="gender" name="gender" ngModel required> Female
+        </p>
+        <p>
+            <label for="isMarried">Married</label>
+            <input type="checkbox" class="form-check-input" id="isMarried" name="isMarried" ngModel required>
+        </p>
+        <p>
+            <label for="country">Country</label>
+            <select class="form-select w-25" name="country" id="country" ngModel required>
+                <option value="">Select</option>
+                <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
+            </select>
+        </p>
+        <div ngModelGroup="address">
+            <p>
+                <label for="city">City</label>
+                <input class="form-control w-25" type="text" name="city" ngModel>
+            </p>
+            <p>
+                <label for="street">Street</label>
+                <input class="form-control w-25" type="text" name="street" ngModel>
+            </p>
+            <p>
+                <label for="pincode">Pin Code</label>
+                <input class="form-control w-25" type="text" name="pincode" ngModel>
+            </p>
+        </div>
+        <p>
+            <button class="btn btn-primary" [disabled]="!contactForm.valid" type="submit">Submit</button>
+        </p>
+    </form>
+</div>
+
